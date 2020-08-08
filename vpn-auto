@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+set LOCATION [lindex $argv 0]
+if { [string compare $LOCATION ""] == 0 } {
+    set LOCATION "Taiwan"
+}
+spawn vpn con $LOCATION
+expect "Username: \[ehuang02\]"
+send "\r"
+expect "Password:"
+send "$env(OKTA)\r"
+expect "Second Password:"
+send "push\r"
+interact
