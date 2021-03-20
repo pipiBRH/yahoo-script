@@ -4,8 +4,8 @@ if { [string compare $LOCATION ""] == 0 } {
     set LOCATION "vpn-1-gci.corp.tw1.yahoo.com/GeneralHybrid"
 }
 spawn vpn con $LOCATION
-expect "Username: \[ehuang02\]"
-send "\r"
+expect "Username:"
+send "ehuang02\r"
 expect "Password:"
 send "$env(OKTA)\r"
 expect "Second Password:"
