@@ -1,7 +1,7 @@
 #!/usr/bin/expect -f
 set LOCATION [lindex $argv 0]
 if { [string compare $LOCATION ""] == 0 } {
-    set LOCATION "Taiwan"
+    set LOCATION "vpn-1-gci.corp.tw1.yahoo.com/GeneralHybrid"
 }
 spawn vpn con $LOCATION
 expect "Username: \[ehuang02\]"
