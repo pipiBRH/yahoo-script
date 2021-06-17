@@ -3,7 +3,7 @@ set AWS_ACCOUNT [lindex $argv 0]
 set PROFILE [lindex $argv 1]
 set TTL [lindex $argv 2]
 
-spawn sh /Users/ehuang02/work/yahoo/oath-aws-developer-tools/run.sh -c awsfed -b true -a $AWS_ACCOUNT -n -p $PROFILE -d $TTL
+spawn sh /Users/ehuang02/work/yahoo/oath-aws-developer-tools/run.sh -c awsfed -b true -a $AWS_ACCOUNT -n -p $PROFILE 
 expect "Okta Shortid: "
 send "ehuang02\r"
 expect "Password: "
