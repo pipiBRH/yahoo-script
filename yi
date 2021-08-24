@@ -1,0 +1,7 @@
+#!/usr/bin/expect -f
+spawn yinit -force
+expect "123456"
+send "123456\r"
+expect "Password:"
+send "$env(OKTA)\r"
+interact
