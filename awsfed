@@ -19,4 +19,5 @@ expect {
 	    send "1\r"
     }
 }
+send "\r"
 interact
