@@ -2,8 +2,10 @@
 set AWS_ACCOUNT [lindex $argv 0]
 set PROFILE [lindex $argv 1]
 set TTL [lindex $argv 2]
+set timeout 30
 
 spawn sh /Users/ehuang02/work/yahoo/oath-aws-developer-tools/run.sh -c awsfed -b true -a $AWS_ACCOUNT -n -p $PROFILE
+
 expect "Okta Shortid: "
 send "ehuang02\r"
 expect "Password: "
@@ -20,22 +22,24 @@ expect {
     }
 }
 expect {
-    -re " 0\[^\n]+fed.admin.user"
+    -re "0: Account: \[0-9]+ \\\(\[-a-zA-Z]+\\\) Role: sso/fed.admin.user"
     {
         send "0\r"
     }
-    -re " 1\[^\n]+fed.admin.user"
+    -re "1: Account: \[0-9]+ \\\(\[-a-zA-Z]+\\\) Role: sso/fed.admin.user"
     {
         send "1\r"
     }
-    -re " 2\[^\n]+fed.admin.user"
+    -re "2: Account: \[0-9]+ \\\(\[-a-zA-Z]+\\\) Role: sso/fed.admin.user"
     {
         send "2\r"
     }
-    -re " 3\[^\n]+fed.admin.user"
+    -re "3: Account: \[0-9]+ \\\(\[-a-zA-Z]+\\\) Role: sso/fed.admin.user"
     {
         send "3\r"
     }
+    timeout {exit 0}
+    eof {exit 0}
 }
 
 interact
