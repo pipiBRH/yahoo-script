@@ -1,7 +1,14 @@
 #!/usr/bin/expect -f
-spawn yinit -force
+spawn yinit
 expect "123456"
 send "123456\r"
-expect "Password:"
-send "$env(OKTA)\r"
+expect {
+    -re "Password:"
+    {
+        send "$env(OKTA)\r"
+    }
+    timeout {exit 0}
+    eof {exit 0}
+}
+
 interact
