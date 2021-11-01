@@ -1,5 +1,5 @@
 #!/usr/bin/expect -f
-spawn yinit
+spawn yinit -force
 expect "123456"
 send "123456\r"
 expect {
