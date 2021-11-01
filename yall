@@ -1,0 +1,7 @@
+#!/bin/bash
+if [[ $(pgrep yubico-agent) == "" ]]; then
+    yubico-agent &
+fi
+
+yi
+athenz-user-cert -r
