@@ -1,5 +1,5 @@
 #!/usr/bin/expect -f
-spawn lpass login --trust ethan.huang@verizonmedia.com
+spawn lpass login --trust ethan.huang@yahooinc.com
 expect "Master Password" 
 send "$env(LASTPASS)\r"
 interact
